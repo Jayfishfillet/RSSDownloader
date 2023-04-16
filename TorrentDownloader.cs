@@ -22,6 +22,8 @@ try
     ParseFeed(rss, fullPath, folderName);
 
     Console.WriteLine("Torrents added to download queue successfully!");
+    Console.WriteLine("Press any key to exit.");
+    Console.ReadKey(true);
 }
 catch (Exception ex)
 {
