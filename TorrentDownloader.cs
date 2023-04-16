@@ -2,6 +2,16 @@
 using System.Net;
 using System.Xml.Linq;
 
+Console.ForegroundColor = ConsoleColor.Yellow;
+Console.WriteLine(@"
+            ____  __________    ____                      __                __                 
+           / __ \/ ___/ ___/   / __ \____ _      ______  / /___  ____ _____/ /__  _____        
+ ______   / /_/ /\__ \\__ \   / / / / __ \ | /| / / __ \/ / __ \/ __ `/ __  / _ \/ ___/  ______
+/_____/  / _, _/___/ /__/ /  / /_/ / /_/ / |/ |/ / / / / / /_/ / /_/ / /_/ /  __/ /     /_____/
+        /_/ |_|/____/____/  /_____/\____/|__/|__/_/ /_/_/\____/\__,_/\__,_/\___/_/             
+");
+Console.ResetColor();
+
 Console.Write("Enter RSS feed link: ");
 string rssLink = Console.ReadLine();
 
@@ -18,10 +28,10 @@ string fullPath = Path.Combine(parentDirectory, folderName);
 try
 {
     string rss = DownloadRssFeedAsync(rssLink).Result;
-
     ParseFeed(rss, fullPath, folderName);
-
+    Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("Torrents added to download queue successfully!");
+    Console.ResetColor();
     Console.WriteLine("Press any key to exit.");
     Console.ReadKey(true);
 }
